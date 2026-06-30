@@ -1,14 +1,14 @@
 # MainCraft-Internship
 
 ## Overview
-This repository contains completed tasks for the MainCraft Internship program, focusing on data analysis and exploratory data analysis (EDA) using Python libraries like Pandas, Matplotlib, and Seaborn.
+This repository contains completed tasks for the MainCraft Internship program, focusing on data analysis and exploratory data analysis (EDA) using Python libraries like Pandas, Matplotlib, and Seaborn. The work demonstrates practical end-to-end EDA, feature engineering, and visualization skills applied to real-world datasets.
 
 ---
 
 ## Task 1: Student Performance Analysis
 
 ### Overview
-This project performs a comprehensive analysis of student performance using the **student-mat dataset**. The analysis explores various factors that influence student academic performance, including study time, gender, support systems, and lifestyle factors.
+This project performs a comprehensive analysis of student performance using the **student-mat dataset**. The analysis explores various factors that influence student academic performance, including demographics, parental background, study patterns, and extracurricular factors.
 
 ### Dataset
 - **Dataset Name**: student-mat
@@ -100,11 +100,11 @@ The dataset includes:
 ## Task 2: Titanic Survival Analysis
 
 ### Overview
-This project performs exploratory data analysis (EDA) on the **Titanic dataset** to understand passenger survival patterns. The analysis investigates how demographic factors such as gender, passenger class, age, and socio-economic status influenced survival chances aboard the RMS Titanic.
+This project performs exploratory data analysis (EDA) on the **Titanic dataset** to understand passenger survival patterns. The analysis investigates how demographic factors such as gender, passenger class, age, and family composition influenced survival rates.
 
 ### Dataset
 - **Dataset Name**: train_and_test2.csv
-- **Key Columns**: PassengerId, Age, Fare, Sex, SibSp, Survived, Pclass, Embarked
+- **Key Columns**: PassengerId, Age, Fare, Sex, SibSp, Parch, Survived, Pclass, Embarked
 - **Data Cleaning**: Handled missing values in Age and Embarked columns
 
 ### Data Features
@@ -200,12 +200,82 @@ The dataset includes:
 
 ---
 
+## Task 3: Titanic Mini Exploratory Data Analysis (EDA)
+
+### Overview
+This deliverable (Task 3) provides a compact, focused EDA on the Titanic dataset with an emphasis on robust cleaning, advanced group-by analyses, and clear visual storytelling. The notebook demonstrates smart imputation, feature engineering (AgeGroup, FamilySize), and multi-dimensional survival insights.
+
+> Deliverable Notebook: `Task3.ipynb`
+
+### Dataset
+- **Dataset Name**: train_and_test2.csv (same preprocessed file used across Titanic tasks)
+- **Key Columns**: Passengerid, Age, Fare, Sex, sibsp, Parch, Pclass, Embarked, Survived
+- **Notes**: The dataset included some non-standard column names (e.g., `2urvived`) that were standardized in the notebook. Missing values in `Age` (if present) are imputed with the mean and `Embarked` is filled with the mode.
+
+### Key Analyses Performed
+
+1. Environment setup and data loading with Pandas, NumPy, Matplotlib, and Seaborn.
+2. Data cleaning and schema standardization:
+   - Renamed non-standard columns, created `Sex_Label` mapping, and dropped extraneous tracking columns.
+   - Imputed `Age` (mean) and `Embarked` (mode) where necessary.
+3. Feature engineering:
+   - `AgeGroup` (Child, Teenager, Young Adult, Adult, Senior)
+   - `FamilySize` = `sibsp` + `Parch`
+   - `Port_Label` mapping for embarkation codes
+4. Group-by analyses answering targeted questions:
+   - Survival rate by `AgeGroup`
+   - Survival rate by embarkation port (`Port_Label`)
+   - Survival rate by `FamilySize`
+5. Visual storytelling with histograms, correlation heatmap, and survival-by-family-size bar chart.
+
+### Representative Results (from the notebook)
+- Survival Rate by Age Group:
+  - Child: 42.55%
+  - Teenager: 30.30%
+  - Young Adult: 23.80%
+  - Adult: 26.99%
+  - Senior: 15.15%
+
+- Survival Rate by Embarkation Port:
+  - Cherbourg: 34.44%
+  - Queenstown: 24.39%
+  - Southampton: 23.91%
+
+- Survival Rate by Family Size (examples):
+  - FamilySize = 0: 20.63%
+  - FamilySize = 1: 37.87%
+  - FamilySize = 3: 48.84%
+
+### Visualizations
+- Age distribution histogram with KDE
+- Correlation heatmap of numeric features (Age, Fare, Sex, Pclass, FamilySize, Survived)
+- Bar chart showing survival probability by `FamilySize`
+
+### Key Takeaways
+- Small family groups (1–3 members) tend to have higher survival probabilities; very large families and solo travelers show lower survival.
+- `Pclass` and `Fare` show notable relationships with survival, reinforcing socio-economic effects.
+- Survival rates differ by embarkation port, which likely reflects passenger socio-economic distributions.
+
+### Files
+- `Task3.ipynb`: Jupyter notebook with the Task 3 deliverable analysis
+
+### How to Run
+1. Ensure you have the required libraries installed:
+   ```
+   pip install pandas numpy matplotlib seaborn
+   ```
+2. Place `train_and_test2.csv` in the same working directory as the notebook.
+3. Run the notebook cells sequentially to reproduce the analysis and plots.
+
+---
+
 ## Repository Structure
 ```
 MainCraft-Internship/
 ├── README.md                    # This file
 ├── maincraft_task1.ipynb        # Task 1: Student Performance Analysis
-└── Task2.ipynb                  # Task 2: Titanic Survival Analysis
+├── Task2.ipynb                  # Task 2: Titanic Survival Analysis
+└── Task3.ipynb                  # Task 3: Titanic Mini EDA (deliverable)
 ```
 
 ## Summary
